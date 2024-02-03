@@ -3,6 +3,17 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 
 const apiurl = 'https://antioch-production.up.railway.app/antioch/api/v1.0/spell/';
 
+function formatName(name){
+	let words = name.split(" ");
+	let spell = "";
+	for (let i=0; i< words.length; i++){
+		words[i] = words[i][0].toUpperCase() + words[i].substring(1);
+		spell = spell + " " + words[i];
+	}
+
+	return spell;
+}
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('spell')
@@ -19,7 +30,7 @@ module.exports = {
 		
         const exampleEmbed = new EmbedBuilder()
 			.setColor(0x0099ff)
-			.setTitle(string)
+			.setTitle(formatName(string))
 			.addFields(
 				{
 					name: 'Circle', value: `${spell["spells"]['circle']}`, inline: true,
@@ -31,7 +42,7 @@ module.exports = {
                     name: 'verbal', value: `${spell["spells"]['verbal']}`, inline: true,
                 },
                 {
-                    name: 'Active', value: `${spell["spells"]['active']}`, inline: true,
+                    name: 'Active', value: `${spell["spells"]['active']}`, inline: false,
                 },
                 {
                     name: 'Material', value: `${spell["spells"]['material']}`, inline: true,
