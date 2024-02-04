@@ -14,6 +14,24 @@ function formatName(name){
 	return spell;
 }
 
+function parseNull(string){
+	if(string == null){
+		return "None";
+	}
+	else {
+		return string;
+	}
+}
+
+function parseDesc(string){
+	if(string == null){
+		return "This spell has a long and complicated description. Please reference https://www.realmsnet.net/rules/omnibus#spell-descriptions";
+	}
+	else {
+		return string;
+	}
+}
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('spell')
@@ -39,19 +57,19 @@ module.exports = {
 					name: 'Uses', value: `${spell["spells"]['uses']}`, inline: true,
 				},
                 {
-                    name: 'verbal', value: `${spell["spells"]['verbal']}`, inline: true,
+                    name: 'verbal', value: `${parseNull(spell["spells"]['verbal'])}`, inline: true,
+                },
+				{
+                    name: 'Caveats', value: `${parseNull(spell["spells"]['caveats'])}`, inline: true,
                 },
                 {
-                    name: 'Active', value: `${spell["spells"]['active']}`, inline: false,
+                    name: 'Active', value: `${parseNull(spell["spells"]['active'])}`, inline: true,
                 },
                 {
-                    name: 'Material', value: `${spell["spells"]['material']}`, inline: true,
-                },
-                {
-                    name: 'Caveats', value: `${spell["spells"]['caveats']}`, inline: true,
+                    name: 'Material', value: `${parseNull(spell["spells"]['material'])}`, inline: true,
                 },
 			)
-			.setDescription(`${spell["spells"]['description']}`)
+			.setDescription(`${parseDesc(spell["spells"]['description'])}`)
 			.setTimestamp();
 
 
