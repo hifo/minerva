@@ -4,7 +4,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('alchemy')
 		.setDescription('Given the circle to learn alchemy in, return the amount of alchemy points gained')
-        .addStringOption(option =>
+        .addIntegerOption(option =>
 			option.setName('input')
 				.setDescription('The circle to calculate based on')
 				.setRequired(true)),
