@@ -41,7 +41,7 @@ module.exports = {
 				.setDescription('The spell to look up')
 				.setRequired(true)),
 	async execute(interaction) {
-        let string = interaction.options.getString('input');
+        let string = interaction.options.getString('input').toLowerCase();
         console.log(string);
         let spell = await fetch(`${apiurl}${string}`).then(response => response.json());
         console.log(spell);
@@ -73,7 +73,7 @@ module.exports = {
 			.setTimestamp();
 
 
-		interaction.reply({ embeds: [exampleEmbed] }).catch(error => {
+		interaction.reply({ embeds: [exampleEmbed] }).catch(error => {b
 			console.log(error);
 			interaction.reply({ content: `I didn't recognize your input (${string}). Be sure the spell you're requesting is from the Realm Omnibus` });
 		});
