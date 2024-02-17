@@ -18,7 +18,7 @@ module.exports = {
 			if(circle < 1 || circle > 6){
 				interaction.reply({ content: `${input} is an invalid circle. Please try again` });
 			} else{
-				interaction.reply({ content: `The number of alchemy points gained from learning it in the ${input} circle is ${alchemy[input-1]}` });
+				interaction.reply({ content: `The number of alchemy points gained from learning it in the ${circle} circle is ${alchemy[circle-1]}` });
 			}
 		});
 	},
