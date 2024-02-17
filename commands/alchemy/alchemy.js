@@ -15,7 +15,7 @@ module.exports = {
 		let alchemy = [1,2,4,6,8,10];
 
 		interaction.reply({}).catch(error => {
-			if(input < 1 || input > 6){
+			if(circle < 1 || circle > 6){
 				interaction.reply({ content: `${input} is an invalid circle. Please try again` });
 			} else{
 				interaction.reply({ content: `The number of alchemy points gained from learning it in the ${input} circle is ${alchemy[input-1]}` });
