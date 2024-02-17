@@ -14,7 +14,7 @@ module.exports = {
 
 		let alchemy = [1,2,4,6,8,10];
 
-		interaction.reply({ embeds: [exampleEmbed] }).catch(error => {
+		interaction.reply({}).catch(error => {
 			if(input < 1 || input > 6){
 				interaction.reply({ content: `${input} is an invalid circle. Please try again` });
 			} else{
