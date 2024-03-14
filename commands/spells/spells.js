@@ -23,15 +23,6 @@ function parseNull(string){
 	}
 }
 
-function parseDesc(string){
-	if(string == null){
-		return "This spell has a long and complicated description. Please reference https://www.realmsnet.net/rules/omnibus#spell-descriptions";
-	}
-	else {
-		return string;
-	}
-}
-
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('spell')
@@ -69,11 +60,11 @@ module.exports = {
                     name: 'Material', value: `${parseNull(spell["spells"]['material'])}`, inline: true,
                 },
 			)
-			.setDescription(`${parseDesc(spell["spells"]['description'])}`)
+			.setDescription(spell['spells']['description'] || spell['spells']['link'])
 			.setTimestamp();
 
 
-		interaction.reply({ embeds: [exampleEmbed] }).catch(error => {b
+		interaction.reply({ embeds: [exampleEmbed] }).catch(error => {
 			console.log(error);
 			interaction.reply({ content: `I didn't recognize your input (${string}). Be sure the spell you're requesting is from the Realm Omnibus` });
 		});

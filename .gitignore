@@ -1,3 +1,6 @@
 /node_modules/*
 config.json
 deploy-commands*
+.env
+.vscode
+.nyc_output
